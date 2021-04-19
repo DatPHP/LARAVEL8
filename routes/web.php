@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -141,6 +144,26 @@ Route::get('news', function(){
     return view('fontend.news-list')->with(compact('news_list'));
   });
 
+  Route::get('product/create', [ProductController::class,'create'])->name('product.create');
+  Route::get('product/{id}/edit', [ProductController::class,'edit'])->name('product.edit');
+  Route::post('product/create', [ProductController::class,'store']);
 
 
 
+
+
+
+  Route::get('product/list', [ProductController::class,'index']);
+
+  Route::get('dashboard/login', [AdminController::class,'login'])->name('dashboard.login');
+
+  Route::post('dashboard/login', [AdminController::class,'dashboard']);
+  Route::get('dashboard', [AdminController::class,'index'])->name('dashboard');
+
+
+  Route::get('user/create', 'App\Http\Controllers\UserController@showRegisterForm')->name('user.create');
+  Route::post('user/create', 'App\Http\Controllers\UserController@storeUser');
+  Route::get('user/list', 'App\Http\Controllers\UserController@getlist')->name('user.list');
+  Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');  // declare new style of route 
+  Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');  // declare new style of route 
+ 

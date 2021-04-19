@@ -1,0 +1,1 @@
+<h1> Wellcome to homepage DatShop </h1><?php /**PATH /var/www/html/LARAVEL8/resources/views/homepage.blade.php ENDPATH**/ ?>
