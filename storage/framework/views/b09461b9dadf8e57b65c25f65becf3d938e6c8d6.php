@@ -4,7 +4,7 @@
         <img src="http://via.placeholder.com/160x160" class="rounded-circle" alt="User Image">
     </div>
     <div class="pull-left info">
-        <p>Hello <?php echo e($username ?? ''); ?></p>
+        <p>Hello </p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
     </div>
     </div>

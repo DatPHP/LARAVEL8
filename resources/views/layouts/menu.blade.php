@@ -23,5 +23,7 @@
                 <li><a href="/contact">Liên hệ</a></li>
             </ul>
         </div><!--/.nav-collapse -->
+
+        <h1> Hello {{ $username ?? '' }}
     </div>
 </nav>

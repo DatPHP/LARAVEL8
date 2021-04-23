@@ -8,6 +8,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\User\Auth\LoginController;
+use App\Http\Controllers\User\HomeController;
+
+
 
 
 /*
@@ -142,11 +146,14 @@ Route::get('news', function(){
       ['title' => 'Bài viết số 4', 'content' => 'Nội dung bài viết 4', 'post_date' => '2017-01-03']
       );
     return view('fontend.news-list')->with(compact('news_list'));
-  });
+  })->name('news.list');
 
   Route::get('product/create', [ProductController::class,'create'])->name('product.create');
   Route::get('product/{id}/edit', [ProductController::class,'edit'])->name('product.edit');
   Route::post('product/create', [ProductController::class,'store']);
+
+
+
 
 
 
@@ -167,3 +174,10 @@ Route::get('news', function(){
   Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');  // declare new style of route 
   Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');  // declare new style of route 
  
+
+
+  Route::match(['get', 'post'], '/login', [LoginController::class, 'login'])->name('login');
+  Route::middleware('auth')->group(function (){
+      Route::get('/', [HomeController::class, 'index'])->name('home');
+      Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+  });

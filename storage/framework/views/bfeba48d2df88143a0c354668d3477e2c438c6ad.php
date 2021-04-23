@@ -23,5 +23,8 @@
                 <li><a href="/contact">Liên hệ</a></li>
             </ul>
         </div><!--/.nav-collapse -->
+
+        <h1> Hello <?php echo e($username ?? ''); ?>
+
     </div>
 </nav><?php /**PATH /var/www/html/LARAVEL8/resources/views/layouts/menu.blade.php ENDPATH**/ ?>

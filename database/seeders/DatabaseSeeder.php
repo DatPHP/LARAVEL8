@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,10 +17,30 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        /*
         $this->call([
             UserSeeder::class,
-           // CustomerSeeder::class,
-           // ProductSeeder::class
+            CustomerSeeder::class,
+            ProductSeeder::class
         ]);
+        */ 
+     
+        DB::table('admins')->insert([
+            [
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('admin123'),
+            ]
+        ]);
+
+        DB::table('users')->insert([
+            [
+                'name' => 'User',
+                'email' => 'user@gmail.com',
+                'password' => bcrypt('admin123'),
+                'roles'=>'admin'
+            ]
+        ]);
+    
     }
 }

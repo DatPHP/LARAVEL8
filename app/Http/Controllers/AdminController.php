@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Paginator;
 
 class AdminController extends Controller
 {
+    public function __construct() {
+        @session_start();        
+    }    
+    
     public function login(){
        
         return view('admin.login');
